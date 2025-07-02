@@ -1,3 +1,164 @@
+##  System Requirements
+
+To run this Laravel project locally, ensure your environment meets the following requirements:
+
+### Backend (PHP)
+
+- PHP: **^8.2**
+- Composer: **Latest stable version**
+- Database: **SQLite** 
+- PHP Extensions:
+  - `openssl`
+  - `pdo`
+  - `mbstring`
+  - `tokenizer`
+  - `xml`
+  - `ctype`
+  - `json`
+  - `fileinfo`
+  - `bcmath`
+  - `curl`
+
+### Frontend (Node & NPM)
+
+- Node.js: **>= 16.15.0**
+- NPM: **>= 9.0.0** (Note: Tagify requires npm >=9)
+
+---
+
+##  Installation Guide
+
+Follow these steps to set up the project locally.
+
+###  Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+### Install PHP Dependencies via Composer
+```
+composer install
+```
+
+### Install JS Dependencies via NPM
+```
+npm install
+```
+
+### Copy and Configure Environment File
+```
+cp .env.example .env
+php artisan key:generate
+```
+
+### Ensure the following .env settings are correct for your local dev:
+```
+DB_CONNECTION=sqlite
+SESSION_DRIVER=database
+QUEUE_CONNECTION=database
+FILESYSTEM_DISK=public
+```
+
+### Create a SQLite file if it doesn’t exist:
+```
+touch database/database.sqlite
+```
+
+### Update .env with the absolute path:
+```
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database/database.sqlite
+```
+### Run Migrations
+```
+php artisan migrate
+```
+
+###Run the Application
+You can use the following commands to start the backend and frontend:
+```
+npm run dev      # Starts Vite
+php artisan serve
+```
+## Run Your Tests
+Run all your tests with:
+
+```
+php artisan test
+```
+
+Or using PHPUnit directly:
+
+```
+./vendor/bin/phpunit
+```
+
+### Test Coverage
+This project includes feature tests for the following:
+
+ - User registration, login, logout
+ - Route protection
+ - Post CRUD operations
+ - OTP-based password reset
+
+You can find all tests inside the tests/Feature/ directory:
+
+```
+tests/Feature/
+```
+
+##  Mail Configuration (for OTP Password Reset)
+
+This project uses **Mailtrap** to handle email sending in development — for OTP-based password reset.
+
+###  `.env` Settings
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io 
+MAIL_PORT=2525
+MAIL_USERNAME=17f51a51d34832
+MAIL_PASSWORD=864870def27f35
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="ihsan"
+```
+
+### Tech Stack
+
+ - Laravel ^12
+ - PHP ^8.2
+ - Tailwind CSS ^4
+ - Vite
+ - Alpine.js (optional, loaded)
+ - Tagify (for tag inputs)
+ - SQLite (default DB used in .env)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 🔐 How Login Works
 
 This project includes a complete **user authentication system** built using Laravel. It allows users to register, log in, log out, and access protected resources. The system uses Laravel's built-in authentication features along with custom enhancements.
